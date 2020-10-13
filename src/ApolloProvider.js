@@ -6,7 +6,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 const httpLinK = createHttpLink({
-  uri: "http://localhost:3500",
+  uri: "https://safe-shore-22134.herokuapp.com/",
 });
 
 const client = new ApolloClient({
