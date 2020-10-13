@@ -183,7 +183,15 @@ section {
   }
   
   @media (max-width:700px){
-    .containerR {
+    section .containerR {
       height: 100%;
+      max-width: 400px;
+    }
+    section .containerR .imgBx {
+      display: none;
+    }
+  
+    section .containerR .user .formBx {
+      width: 100%;
     }
   }

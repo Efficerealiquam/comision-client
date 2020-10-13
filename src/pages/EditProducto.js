@@ -53,7 +53,7 @@ function EditProducto(props) {
   }
   return (
     <section style={{ height: "90vh" }}>
-      <div style={{ height: "700px" }} className="containerR">
+      <div className="containerR">
         <div className="user singinBx">
           {producto !== "" && (
             <div className="formBx " style={{ width: "100%" }}>

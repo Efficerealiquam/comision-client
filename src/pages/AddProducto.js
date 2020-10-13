@@ -28,7 +28,7 @@ function AddProducto(props) {
   }
   return (
     <section style={{ height: "90vh" }}>
-      <div style={{ height: "700px" }} className="containerR">
+      <div className="containerR">
         <div className="user singinBx">
           <div className="formBx " style={{ width: "100%" }}>
             <form style={{ textAlign: "center" }} onSubmit={onSubmit}>
