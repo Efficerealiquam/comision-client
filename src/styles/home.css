@@ -1,0 +1,176 @@
+.listHome{
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+    margin-top: 50px;
+}
+
+.sectionAllMarcas{
+    position: relative;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    background: transparent;
+    font-family: 'Cinzel', serif;
+    height: 100%;
+   justify-content: center;
+   align-items: center;
+}
+.formList{
+    width: auto;
+}
+.sectionAllMarcas .ulLista{
+position: relative;
+width: auto;
+
+padding: 10px;
+box-sizing: border-box;
+background: rgba(255, 255, 255, .2);
+border: 1px solid #ccc;
+}
+.sectionAllMarcas .ulLista li .formList{
+    display: flex;
+    background: rgba(255, 255, 255, .2);
+    padding: 10px 20px;
+    color: #333;
+    margin: 5px 0;
+    transition: .5s;
+    height: 100px;
+    align-items: center;
+    border: 1px solid #ccc;
+   
+}
+.sectionAllMarcas .ulLista li .formList .number{
+    width: 200px;
+}
+
+.sectionAllMarcas .ulLista li .formList .name{
+    width: 200px;
+}
+.sectionAllMarcas .ulLista li .formList .points{
+    width: 100px;
+    text-align: right;
+}
+.sectionAllMarcas .ulLista li .formList input{
+    width: 10%;
+    margin-left: 10px;
+    
+}
+.sectionAllMarcas .ulLista li .formList .btn{
+    
+    margin-left: 20px;
+    
+}
+.sectionAllMarcas .ulLista li .formList .bad{
+    width: 70px;
+    text-align: right;
+}
+.sectionAllMarcas .ulLista li:hover .formList{
+    transform: scale(1.01);
+    background: transparent;
+}
+.btn1 span{
+    position: absolute;
+    display: block;
+}
+.btn1{
+    background: transparent;
+    border: none;
+    border-radius:0px ;
+    overflow: hidden;
+    font-weight: 600;
+    color: #555;
+    display: inline-block;
+    padding: 10px 20px; 
+    opacity: 1;
+    margin-top: 5px;
+    transform: translateY(0px);
+    transition: 0.5s;
+}
+
+.btn1:hover{
+    background: rgba(85, 85, 85, 0.8);
+    color: #ccc;
+    text-shadow: 0 0 5px white;
+}
+
+/*Button cotizar*/
+.sectionAllMarcas div button .sp1{
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#ccc);
+    animation: animate1 2s linear infinite;
+}
+@keyframes animate1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+.sectionAllMarcas div button .sp2{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#ccc);
+    animation: animate2 2s linear infinite;
+    animation-delay: 0.5s;
+}
+@keyframes animate2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+.sectionAllMarcas div button .sp3{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#ccc);
+    animation: animate3 2s linear infinite;
+    animation-delay: 1s;
+}
+@keyframes animate3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+.sectionAllMarcas div button .sp4{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#ccc);
+    animation: animate4 2s linear infinite;
+    animation-delay: 1.5s;
+}
+@keyframes animate4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
+
+/*Contador de items */
+body{
+    counter-reset: section;
+}
+.numberItem{
+    padding:  0 50px;
+}
+.numberItem::before{
+    counter-increment: section;                   /* Increment the value of section counter by 1 */
+    content:counter(section) ; 
+}
