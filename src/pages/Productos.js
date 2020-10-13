@@ -102,7 +102,6 @@ function Productos() {
                       <div className="formList">
                         <button
                           className="ui red red button"
-                          o
                           onClick={() => setProId(prod.id)}
                         >
                           Eliminar
