@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { ADD_PRODUCTO_LISTA, DELETE_PRODUCTO } from "../graphql/getMutations";
 import { GET_PRODUCTOS_QUERY } from "../graphql/getQuerys";
 import "../styles/home.css";
-//ADD_PRODUCTO_LISTA
 
 function Productos() {
   const [idProducto, setIdProducto] = useState("");
@@ -16,7 +15,7 @@ function Productos() {
   }
 
   const [addProducto] = useMutation(ADD_PRODUCTO_LISTA, {
-    update(_, data) {
+    update(data) {
       if (
         !localStorage.getItem("idList") ||
         localStorage.getItem("idList") === ""
@@ -49,6 +48,15 @@ function Productos() {
 
   const [proId, setProId] = useState("");
   const [deleteProList] = useMutation(DELETE_PRODUCTO, {
+    update(proxy) {
+      let data = proxy.readQuery({
+        query: GET_PRODUCTOS_QUERY,
+      });
+
+      data.getProductos = data.getProductos.filter((p) => p.id !== proId);
+
+      proxy.writeQuery({ query: GET_PRODUCTOS_QUERY, data });
+    },
     onError(err) {
       console.log(err);
     },

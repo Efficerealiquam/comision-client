@@ -47,14 +47,32 @@ function Home() {
 
     countPro = data.getListaActual.productos.length;
   }
+  function roundToTwo(num) {
+    let varSum = +(Math.round(num + "e+2") + "e-2");
+
+    return varSum;
+  }
   var Sum = 0;
   const onChange2 = (params) => {
-    Sum = Sum + params;
+    var p = roundToTwo(params);
+
+    Sum = Sum + p;
   };
 
   //DELETE_PRODUCT_LISTA
   const [proId, setProId] = useState("");
   const [deleteProList] = useMutation(DELETE_PRODUCT_LISTA, {
+    update(proxy) {
+      let data = proxy.readQuery({
+        query: GET_LISTA_QUERY,
+        variables: { idLista },
+      });
+
+      data.getListaActual.productos = data.getListaActual.productos.filter(
+        (p) => p.id !== proId
+      );
+      proxy.writeQuery({ query: GET_LISTA_QUERY, data });
+    },
     onError(err) {
       console.log(err);
     },
@@ -105,8 +123,10 @@ function Home() {
                           )}
                         >
                           C:{" "}
-                          {(prod.precio * prod.cantidad * prod.porcentaje) /
-                            100}{" "}
+                          {roundToTwo(
+                            (prod.precio * prod.cantidad * prod.porcentaje) /
+                              100
+                          )}{" "}
                         </span>
                         <button
                           className="ui teal basic button"
@@ -149,7 +169,7 @@ function Home() {
                 className="form-control "
                 name="cantidad"
                 type="text"
-                defaultValue={Sum}
+                value={Sum}
                 disabled
               />
               <button

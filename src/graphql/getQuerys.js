@@ -14,6 +14,7 @@ export const GET_LISTA_QUERY = gql`
     }
   }
 `;
+
 export const GET_PRODUCTOS_QUERY = gql`
   {
     getProductos {

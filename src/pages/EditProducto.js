@@ -3,8 +3,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { GET_PRODUCTO_ID } from "../graphql/getQuerys";
 import { UPDATE_PRODUCT } from "../graphql/getMutations";
-import { useForm } from "../hooks/hookForm";
 import "../styles/sesion.css";
+import { useForm } from "../hooks/hookForm";
 function EditProducto(props) {
   const { id } = useParams();
 
@@ -68,7 +68,8 @@ function EditProducto(props) {
                 />
 
                 <input
-                  type="text"
+                  type="number"
+                  step="any"
                   name="precio"
                   placeholder="Precio"
                   defaultValue={producto.precio}
@@ -76,7 +77,8 @@ function EditProducto(props) {
                 />
 
                 <input
-                  type="text"
+                  type="number"
+                  step="any"
                   name="porcentaje"
                   placeholder="Porcentaje"
                   defaultValue={producto.porcentaje}

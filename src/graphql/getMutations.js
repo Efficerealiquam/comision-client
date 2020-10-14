@@ -50,6 +50,13 @@ export const ADD_PRODUCTO_LISTA = gql`
   mutation createListaAddPro($proId: ID!, $idLista: ID, $cantidad: Int) {
     createListaAddPro(proId: $proId, idLista: $idLista, cantidad: $cantidad) {
       id
+      productos {
+        id
+        nombre
+        precio
+        porcentaje
+        cantidad
+      }
     }
   }
 `;
