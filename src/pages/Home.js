@@ -9,7 +9,7 @@ import {
 import { GET_LISTA_QUERY } from "../graphql/getQuerys";
 import { useForm } from "../hooks/hookForm";
 
-function Home() {
+function Home(props) {
   const { values, onChange, onSubmit } = useForm(updateProductoLista, {
     proId: "",
     idLista: "",
@@ -19,10 +19,11 @@ function Home() {
   if (localStorage.getItem("idList")) {
     idLista = localStorage.getItem("idList");
   }
+
   const { data } = useQuery(GET_LISTA_QUERY, {
     variables: { idLista },
     onError(err) {
-      console.log(err);
+      //console.log(err);
     },
   });
 
@@ -86,6 +87,10 @@ function Home() {
     // eslint-disable-next-line
   }, [proId]);
 
+  function newLista() {
+    localStorage.setItem("idList", "");
+    props.history.push("/");
+  }
   return (
     <div className="listHome">
       <h1>Lista de productos para Comisionar</h1>
@@ -95,7 +100,7 @@ function Home() {
           className="ulLista"
           style={{ alignItems: "center", justifyContent: "center" }}
         >
-          {countPro > 0 ? (
+          {countPro > 0 && idLista !== "" ? (
             <>
               {listaData.productos &&
                 listaData.productos.map((prod) => (
@@ -161,7 +166,7 @@ function Home() {
               </div>
             </>
           )}
-          {countPro > 0 && (
+          {countPro > 0 && idLista !== "" && (
             <div>
               Total:
               <input
@@ -175,7 +180,7 @@ function Home() {
               <button
                 className="btn1"
                 style={{ marginLeft: "10px" }}
-                onClick={() => localStorage.setItem("idList", "")}
+                onClick={() => newLista()}
               >
                 <span className="sp1" />
                 <span className="sp2" />

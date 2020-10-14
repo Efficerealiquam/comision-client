@@ -15,7 +15,7 @@ function Productos() {
   }
 
   const [addProducto] = useMutation(ADD_PRODUCTO_LISTA, {
-    update(data) {
+    update(_, data) {
       if (
         !localStorage.getItem("idList") ||
         localStorage.getItem("idList") === ""
